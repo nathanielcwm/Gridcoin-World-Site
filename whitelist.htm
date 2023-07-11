@@ -36,7 +36,7 @@ title: "Project Whitelist - Gridcoin"
     </p>
     <p>
         Please see <a href="https://gridcoin.ddns.net/pages/project-list.php">this
-        Gridcoin project monitoring website</a> for greylist status updates.
+            Gridcoin project monitoring website</a> for greylist status updates.
     </p>
 </section>
 
@@ -47,154 +47,112 @@ title: "Project Whitelist - Gridcoin"
     </h2>
 
     {% for project in site.data.whitelist.projects %}
-        <section id="project_{{ forloop.index }}" class="project collapse">
-            <header>
-                <img class="img-fluid" src="/assets/img/{{ project.img }}" alt="">
-                <div class="project-header">
-                    <h3>{{ project.name }}</h3>
-                    <p>{{ project.topic }}</p>
-                </div>
-                <div class="project-buttons">
-                    <a class="btn btn-sm btn-homepage" href="{{ project.link }}">Homepage</a>
-                    <a class="btn btn-sm btn-stats" href="{{ project.stats }}">Statistics</a>
-                    <button
-                        class="btn btn-sm btn-more"
-                        data-toggle="collapse"
-                        data-target="#project_{{ forloop.index }}"
-                        aria-expanded="false"
-                        aria-controls="project_details_{{ forloop.index }}"
-                    >
-                        <span class="sr-only">Show More</span>
-                    </button>
-                </div><!-- .project-buttons -->
-            </header>
+    <section id="project_{{ forloop.index }}" class="project collapse">
+        <header>
+            <img class="img-fluid" src="/assets/img/{{ project.img }}" alt="">
+            <div class="project-header">
+                <h3>{{ project.name }}</h3>
+                <p>{{ project.topic }}</p>
+            </div>
+            <div class="project-buttons">
+                <a class="btn btn-sm btn-homepage" href="{{ project.link }}">Homepage</a>
+                <a class="btn btn-sm btn-stats" href="{{ project.stats }}">Statistics</a>
+                <button class="btn btn-sm btn-more" data-bs-toggle="collapse" data-target="#project_{{ forloop.index }}"
+                    aria-expanded="false" aria-controls="project_details_{{ forloop.index }}">
+                    <span class="sr-only">Show More</span>
+                </button>
+            </div><!-- .project-buttons -->
+        </header>
 
-            <div id="project_details_{{ forloop.index }}" class="project-details">
-                <p>{{ project.goal }}</p>
-                <p class="text-muted">{{ project.sponsor }}</p>
-                <ul class="platforms">
-                    <li>
-                        {% if project.supports_windows %}
-                            <img src="/assets/img/ic-platform-windows.svg"
-                                title="Windows Supported"
-                                alt="Windows supported">
-                        {% else %}
-                            <img src="/assets/img/ic-platform-windows.svg"
-                                class="not-supported"
-                                title="Windows not supported"
-                                alt="Windows not supported">
-                        {% endif %}
-                    </li>
-                    <li>
-                        {% if project.supports_mac %}
-                            <img src="/assets/img/ic-platform-macos.svg"
-                                title="macOS supported"
-                                alt="macOS supported">
-                        {% else %}
-                            <img src="/assets/img/ic-platform-macos.svg"
-                                class="not-supported"
-                                title="macOS not supported"
-                                alt="macOS not supported">
-                        {% endif %}
-                    </li>
-                    <li>
-                        {% if project.supports_linux %}
-                            <img src="/assets/img/ic-platform-linux.svg"
-                                title="Linux supported"
-                                alt="Linux supported">
-                        {% else %}
-                            <img src="/assets/img/ic-platform-linux.svg"
-                                class="not-supported"
-                                title="Linux not supported"
-                                alt="Linux not supported">
-                        {% endif %}
-                    </li>
-                    <li>
-                        {% if project.supports_bsd %}
-                            <img src="/assets/img/ic-platform-freebsd.svg"
-                                title="BSD supported"
-                                alt="BSD supported">
-                        {% else %}
-                            <img src="/assets/img/ic-platform-freebsd.svg"
-                                class="not-supported"
-                                title="BSD not supported"
-                                alt="BSD not supported">
-                        {% endif %}
-                    </li>
-                    <li>
-                        {% if project.supports_arm %}
-                            <img src="/assets/img/ic-platform-arm.svg"
-                                title="Linux on ARM supported"
-                                alt="Linux on ARM supported">
-                        {% else %}
-                            <img src="/assets/img/ic-platform-arm.svg"
-                                class="not-supported"
-                                title="Linux on ARM not supported"
-                                alt="Linux on ARM not supported">
-                        {% endif %}
-                    </li>
-                    <li>
-                        {% if project.supports_virtualbox %}
-                            <img src="/assets/img/ic-platform-virtualbox.svg"
-                                title="VirtualBox supported"
-                                alt="VirtualBox supported">
-                        {% else %}
-                            <img src="/assets/img/ic-platform-virtualbox.svg"
-                                class="not-supported"
-                                title="VirtualBox not supported"
-                                alt="VirtualBox not supported">
-                        {% endif %}
-                    </li>
-                    <li>
-                        {% if project.supports_android %}
-                            <img src="/assets/img/ic-platform-android.svg"
-                                title="Android supported"
-                                alt="Android supported">
-                        {% else %}
-                            <img src="/assets/img/ic-platform-android.svg"
-                                class="not-supported"
-                                title="Android not supported"
-                                alt="Android not supported">
-                        {% endif %}
-                    </li>
-                    <li>
-                        {% if project.supports_nvidia_gpu %}
-                            <img src="/assets/img/ic-platform-nvidia.svg"
-                                title="Nvidia GPU supported"
-                                alt="Nvidia GPU supported">
-                        {% else %}
-                            <img src="/assets/img/ic-platform-nvidia.svg"
-                                class="not-supported"
-                                title="Nvidia GPU not supported"
-                                alt="Nvidia GPU not supported">
-                        {% endif %}
-                    </li>
-                    <li>
-                        {% if project.supports_amd_gpu %}
-                            <img src="/assets/img/ic-platform-amd.svg"
-                                title="AMD GPU supported"
-                                alt="AMD GPU supported">
-                        {% else %}
-                            <img src="/assets/img/ic-platform-amd.svg"
-                                class="not-supported"
-                                title="AMD GPU not supported"
-                                alt="AMD GPU not supported">
-                        {% endif %}
-                    </li>
-                    <li>
-                        {% if project.supports_intel_gpu %}
-                            <img src="/assets/img/ic-platform-intel.svg"
-                                title="Intel GPU supported"
-                                alt="Intel GPU supported">
-                        {% else %}
-                            <img src="/assets/img/ic-platform-intel.svg"
-                                class="not-supported"
-                                title="Intel GPU not supported"
-                                alt="Intel GPU not supported">
-                        {% endif %}
-                    </li>
-                </ul><!-- .platforms -->
-            </div><!-- .project-details -->
-        </section><!-- .project -->
+        <div id="project_details_{{ forloop.index }}" class="project-details">
+            <p>{{ project.goal }}</p>
+            <p class="text-muted">{{ project.sponsor }}</p>
+            <ul class="platforms">
+                <li>
+                    {% if project.supports_windows %}
+                    <img src="/assets/img/ic-platform-windows.svg" title="Windows Supported" alt="Windows supported">
+                    {% else %}
+                    <img src="/assets/img/ic-platform-windows.svg" class="not-supported" title="Windows not supported"
+                        alt="Windows not supported">
+                    {% endif %}
+                </li>
+                <li>
+                    {% if project.supports_mac %}
+                    <img src="/assets/img/ic-platform-macos.svg" title="macOS supported" alt="macOS supported">
+                    {% else %}
+                    <img src="/assets/img/ic-platform-macos.svg" class="not-supported" title="macOS not supported"
+                        alt="macOS not supported">
+                    {% endif %}
+                </li>
+                <li>
+                    {% if project.supports_linux %}
+                    <img src="/assets/img/ic-platform-linux.svg" title="Linux supported" alt="Linux supported">
+                    {% else %}
+                    <img src="/assets/img/ic-platform-linux.svg" class="not-supported" title="Linux not supported"
+                        alt="Linux not supported">
+                    {% endif %}
+                </li>
+                <li>
+                    {% if project.supports_bsd %}
+                    <img src="/assets/img/ic-platform-freebsd.svg" title="BSD supported" alt="BSD supported">
+                    {% else %}
+                    <img src="/assets/img/ic-platform-freebsd.svg" class="not-supported" title="BSD not supported"
+                        alt="BSD not supported">
+                    {% endif %}
+                </li>
+                <li>
+                    {% if project.supports_arm %}
+                    <img src="/assets/img/ic-platform-arm.svg" title="Linux on ARM supported"
+                        alt="Linux on ARM supported">
+                    {% else %}
+                    <img src="/assets/img/ic-platform-arm.svg" class="not-supported" title="Linux on ARM not supported"
+                        alt="Linux on ARM not supported">
+                    {% endif %}
+                </li>
+                <li>
+                    {% if project.supports_virtualbox %}
+                    <img src="/assets/img/ic-platform-virtualbox.svg" title="VirtualBox supported"
+                        alt="VirtualBox supported">
+                    {% else %}
+                    <img src="/assets/img/ic-platform-virtualbox.svg" class="not-supported"
+                        title="VirtualBox not supported" alt="VirtualBox not supported">
+                    {% endif %}
+                </li>
+                <li>
+                    {% if project.supports_android %}
+                    <img src="/assets/img/ic-platform-android.svg" title="Android supported" alt="Android supported">
+                    {% else %}
+                    <img src="/assets/img/ic-platform-android.svg" class="not-supported" title="Android not supported"
+                        alt="Android not supported">
+                    {% endif %}
+                </li>
+                <li>
+                    {% if project.supports_nvidia_gpu %}
+                    <img src="/assets/img/ic-platform-nvidia.svg" title="Nvidia GPU supported"
+                        alt="Nvidia GPU supported">
+                    {% else %}
+                    <img src="/assets/img/ic-platform-nvidia.svg" class="not-supported" title="Nvidia GPU not supported"
+                        alt="Nvidia GPU not supported">
+                    {% endif %}
+                </li>
+                <li>
+                    {% if project.supports_amd_gpu %}
+                    <img src="/assets/img/ic-platform-amd.svg" title="AMD GPU supported" alt="AMD GPU supported">
+                    {% else %}
+                    <img src="/assets/img/ic-platform-amd.svg" class="not-supported" title="AMD GPU not supported"
+                        alt="AMD GPU not supported">
+                    {% endif %}
+                </li>
+                <li>
+                    {% if project.supports_intel_gpu %}
+                    <img src="/assets/img/ic-platform-intel.svg" title="Intel GPU supported" alt="Intel GPU supported">
+                    {% else %}
+                    <img src="/assets/img/ic-platform-intel.svg" class="not-supported" title="Intel GPU not supported"
+                        alt="Intel GPU not supported">
+                    {% endif %}
+                </li>
+            </ul><!-- .platforms -->
+        </div><!-- .project-details -->
+    </section><!-- .project -->
     {% endfor %}
 </section><!-- #section_whitelisted_projects -->
