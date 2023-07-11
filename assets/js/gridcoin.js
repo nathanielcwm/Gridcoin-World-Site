@@ -5,26 +5,13 @@ function show(element) {
   element.style.display = "";
 }
 
-document.addEventListener("scroll", (event) => {
+function onScroll() {
   if (window.scrollY > 50) {
     document.querySelector('.navbar').classList.add("navbar-scroll");
   } else {
     document.querySelector('.navbar').classList.remove("navbar-scroll");
   }
-});
-  
-/**
- * Add listeners to the tabs
- * Switch tab contnent upon click
- * Scroll to the tab posibion
- */
-function initTabs() {
-  $('.nav-tabs a').click(function () {
-    if (window.location.hash !== this.hash) {
-      window.location.hash = this.hash;
-    }
-  });
-}
+};
 
 /**
  * Check current hash
@@ -32,38 +19,38 @@ function initTabs() {
  * Change tab content, scroll to the tab
  */
 function handleTabSwitch() {
-  var hash = window.location.hash;
-  if (hash) {
-    var tab = $('.nav-tabs a[href="' + hash + '"]');
-    if (tab.length) {
-      tab.tab('show');
-      // Timeout is crusual to neglate tab switch effect time
-      setTimeout(() => scrollToTheTab(tab), 100);
-    }
-  }
+  var triggerTabList = [].slice.call(document.querySelectorAll('.nav-tabs a'))
+  triggerTabList.forEach(function (triggerEl) {
+    var tabTrigger = new bootstrap.Tab(triggerEl)
+
+    triggerEl.addEventListener('click', function (event) {
+      event.preventDefault()
+      tabTrigger.show()
+      // Timeout is crucial to negate tab switch effect time
+      setTimeout(() => scrollToTheTab(event), 100);
+    })
+  })
 }
 
 function scrollToTheTab(target) {
-  var targetPosition = target.offset().top - 130;
-  $('html, body').animate({
-    'scrollTop': targetPosition
-  }, 50, 'swing');
-}
-
-// $(document).ready(function () {
-//     onScroll();
-//     $(document).on("scroll", onScroll);
-
-//     initTabs();
-//     handleTabSwitch();
-//     $(window).bind('hashchange', handleTabSwitch);
-// });
+  var targetPosition = target.offsetTop - 130;
+  window.scrollTo({
+    top: targetPosition,
+    behavior: 'smooth'
+  });
+};
 
 //Enable bootstrap tooltips.
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
+
+document.addEventListener('DOMContentLoaded', () => {
+  onScroll();
+  window.addEventListener("scroll", onScroll);
+  handleTabSwitch();
+});
 
 function doOtherPlatformsMatch(targetPlatform, name) {
 
