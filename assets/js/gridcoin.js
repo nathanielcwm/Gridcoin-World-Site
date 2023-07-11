@@ -5,14 +5,14 @@ function show(element) {
   element.style.display = "";
 }
 
-function onScroll() {
-    if ($(document).scrollTop() > 50) {
-        $(".navbar").addClass("navbar-scroll");
-    } else {
-        $(".navbar").removeClass("navbar-scroll");
-    }
-}
-
+document.addEventListener("scroll", (event) => {
+  if (window.scrollY > 50) {
+    document.querySelector('.navbar').classList.add("navbar-scroll");
+  } else {
+    document.querySelector('.navbar').classList.remove("navbar-scroll");
+  }
+});
+  
 /**
  * Add listeners to the tabs
  * Switch tab contnent upon click
